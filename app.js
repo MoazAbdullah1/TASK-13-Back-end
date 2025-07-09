@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(cors());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'testdb',
+  host: 'mysql-2861d584-login-signup-database.e.aivencloud.com',
+  user: 'avnadmin',
+  password: process.env.MY_SECRET_PASSWORD,
+  database: 'defaultdb',
 });
 
 db.connect(err => {
