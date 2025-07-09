@@ -14,7 +14,6 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 
-// ✅ Create MySQL connection pool (recommended for Vercel)
 const db = mysql.createPool({
   connectionLimit: 10,
   host: "mysql-2861d584-login-signup-database.e.aivencloud.com",
@@ -29,7 +28,6 @@ const db = mysql.createPool({
 
 const JWT_SECRET = process.env.JWT_SECRET || "mySuperSecretKey";
 
-// ✅ Register route
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -58,7 +56,6 @@ app.post("/register", async (req, res) => {
   });
 });
 
-// ✅ Login route
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -91,7 +88,7 @@ app.post("/login", (req, res) => {
   });
 });
 
-// ⚠️ Do not listen to a port in Vercel
+
 // app.listen(PORT, () => {
 //   console.log(`Server running at http://localhost:${PORT}`);
 // });
