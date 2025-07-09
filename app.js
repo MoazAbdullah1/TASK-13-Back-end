@@ -11,12 +11,20 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 
+const fs = require('fs');
+const path = require('path');
+
 const db = mysql.createConnection({
   host: 'mysql-2861d584-login-signup-database.e.aivencloud.com',
   user: 'avnadmin',
   password: process.env.MY_SECRET_PASSWORD,
   database: 'defaultdb',
+  port: 25787,
+  ssl: {
+    ca: fs.readFileSync(path.join(__Server, 'ca.pem')),
+  },
 });
+
 
 db.connect(err => {
   if (err) throw err;
